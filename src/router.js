@@ -1,23 +1,55 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
 
 Vue.use(Router)
-
 export default new Router({
-  routes: [
-    {
+  routes: [{
       path: '/',
-      name: 'home',
-      component: Home
+      redirect: '/home'
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+      path: '/login',
+      name: 'login',
+      component: () => import( /*webpackChunkName:'login'*/ '@/components/Login/index')
+    },
+    {
+      path: '/home',
+      name: 'home',
+      component: () => import( /*webpackCHunkName:'home' */ '@/components/Home/home'),
+      children: [{
+          path: 'aritice',
+          name: 'aritice',
+          component: () => import( /*webpackCHunkName:'aritice'*/ '@/components/Aritice/aritice'),
+          children: [{
+              path: 'addaritice',
+              name: 'addaritice',
+              component: () => import( /*webpackCHunkName:'addaritice'*/ '@/components/Aritice/addAritice')
+            },
+            {
+              path: 'showAritice',
+              name: 'showAritice',
+              component: () => import( /*webpackCHunkName:'showAritice'*/ '@/components/Aritice/showAritice')
+            },
+
+          ]
+
+        },
+        {
+          path: 'category',
+          name: "category",
+          component: () => import( /*webpackCHunkName:'category'*/ '@/components/Category/category')
+        },
+        {
+          path: 'setting',
+          name: 'setting',
+          component: () => import( /*webpackCHunkName:'setting'*/ '@/components/Setting/setting')
+        },
+        {
+          path: 'team',
+          name: 'team',
+          component: () => import( /*webpackCHunkName:'aritice'*/ '@/components/Team/team')
+        },
+      ]
     }
   ]
 })
