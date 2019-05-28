@@ -8,12 +8,14 @@ import './apis/index'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import myTemplate from '@/components/Commons/my-template'
+import draggable from 'vuedraggable'
 import "@/mixins"
 import MTEditor from 'mteditor'
 Vue.use(MTEditor);
 Vue.use(ElementUI)
 Vue.config.productionTip = false
 Vue.component("my-template",myTemplate)
+Vue.component("draggable",draggable)
   
 router.beforeEach((to,from,next)=>{
     if(to.path==='/login'){

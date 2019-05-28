@@ -30,7 +30,7 @@ export default {
 <style lang="scss" scoped>
 #content{
     height: 300px;
-    width: 900px;
+    width: 820px;
     overflow:scroll;
 }
 </style>

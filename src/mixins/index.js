@@ -13,13 +13,13 @@ Vue.mixin({
           })
         },
         operateConfirm(message, action) {
-            this.$confirm("请确认是否"+message+"?", "提示", {
+         return  this.$confirm("请确认是否"+message+"?", "提示", {
                     confirmButtonText: "确定",
                     cancelButtonText: "取消",
                     type: "warning"
                 })
                 .then(() => {
-                  action()  
+                return   action()  
                 })
                 .catch(() => {
                     this.$message({
